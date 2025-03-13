@@ -1,29 +1,31 @@
 # 📋 To-Do List Flask com Docker e Nginx (SSL)
 
-Projeto de uma aplicação web simples que permite criar, editar, concluir e deletar tarefas. Desenvolvido em Flask (Python), rodando com Gunicorn, Nginx (proxy reverso) e certificado SSL autoassinado, tudo configurado em containers Docker.
+Este projeto consiste em uma aplicação web simples que permite criar, concluir e deletar tarefas. Desenvolvida utilizando Flask (Python), Gunicorn, Nginx como proxy reverso e certificados SSL autoassinados, tudo configurado em containers Docker.
 
 ---
 
-## 🚀 Tecnologias usadas
+## 🚀 Tecnologias Utilizadas
 
-- **Backend:** Python, Flask
+- **Backend:** Python (Flask)
 - **Banco de Dados:** SQLite
 - **Frontend:** HTML, CSS
-- **Docker e Docker Compose**
-- **Gunicorn**
-- **Nginx (Proxy Reverso com SSL autoassinado)**
+- **Servidor Web:** Gunicorn
+- **Proxy Reverso:** Nginx (com SSL autoassinado)
+- **Conteinerização:** Docker e Docker Compose
+
+---
 
 ## 🛠️ Como executar localmente
 
 ### ⚠️ Pré-requisitos
 
-Antes de iniciar, você deve ter instalado:
+Antes de começar, instale:
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Docker e Docker Compose já integrados)
-- Temos no final do README as dependências Python caso não funcione e instale fora do DOCKER.
----
 
-### ▶️ Rodando a aplicação
+> Ao final deste README estão instruções adicionais para instalação manual das dependências Python, caso necessário.
+
+### ▶️ Passos para execução
 
 **1. Clone o repositório**
 
@@ -31,49 +33,76 @@ Antes de iniciar, você deve ter instalado:
 git clone https://github.com/Nogssz/todo-list-flasck-docker.git
 ```
 
-**2. Entre na pasta do projeto:**
+**2. Entre no diretório do projeto:**
 
-```cd todo-list-flasck-docker```
+```bash
+cd todo-list-flasck-docker
+```
 
-**3. Inicialize os certificados SSL autoassinados primeiro**
+**3. Gere os certificados SSL autoassinados (necessário somente na primeira execução):**
 
-```docker compose up -d cert-generator```
+```bash
+docker compose up -d cert-generator
+```
 
-**4. docker compose up -d cert-generator**
-Nessa parte espera cerca de 20 segundo até os certificado serem gerados em certs/ (abra a pasta
-e veja se foi criado dois arquivos la dentro)
+Aguarde cerca de 20 segundos até que os certificados sejam gerados no diretório `certs/`:
+
+```text
 certs/
 ├── fullchain.pem
 └── privkey.pem
+```
 
-**5. Agora suba a aplicação Flask e o Nginx**
+**4. Suba a aplicação Flask juntamente com o Nginx:**
 
-```docker compose up -d --build```
+```bash
+docker compose up -d --build
+```
 
-🌐 Acesse a aplicação no navegador
-Agora você pode acessar através das URLs:
+### 🌐 Acesse a aplicação no navegador
 
-HTTP: http://localhost
-HTTPS: https://localhost
+- **HTTP:** [http://localhost](http://localhost)
+- **HTTPS:** [https://localhost](https://localhost) (aceite o aviso de segurança do certificado autoassinado)
 
-🛑 Parar aplicação e remover containers:
+### 🛑 Para parar a aplicação e remover os containers:
 
-```docker compose down```
+```bash
+docker compose down
+```
 
-📦 Dependências Python
-Para instalar ou atualizar dependências localmente (fora do Docker):
+---
 
-Criar ambiente virtual:
+## 📦 Dependências Python
 
+Caso precise instalar ou atualizar as dependências localmente (fora do Docker):
+
+**Crie um ambiente virtual:**
+
+```bash
 python -m venv .venv
 # Windows (Git Bash)
 source .venv/Scripts/activate
 # Linux/Mac
 source .venv/bin/activate
+```
 
+**Instale as dependências:**
+
+```bash
 pip install -r requirements.txt
+```
 
+**Adicionar novas dependências:**
+
+```bash
 pip install nome-da-dependencia
 pip freeze > requirements.txt
+```
 
+---
 
+## 🤝 Contribuições e dúvidas
+
+Contribuições são muito bem-vindas! Se tiver dúvidas ou sugestões, abra uma issue ou entre em contato diretamente.
+
+Desenvolvido por [Nogssz](https://github.com/Nogssz) 🚀😊
