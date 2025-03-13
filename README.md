@@ -99,10 +99,3 @@ pip install nome-da-dependencia
 pip freeze > requirements.txt
 ```
 
----
-
-## 🤝 Contribuições e dúvidas
-
-Contribuições são muito bem-vindas! Se tiver dúvidas ou sugestões, abra uma issue ou entre em contato diretamente.
-
-Desenvolvido por [Nogssz](https://github.com/Nogssz) 🚀😊
